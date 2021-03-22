@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>SMN.LOCAL</title>
+        <title>SMN.NET</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -19,8 +19,12 @@
         <header>
             <div class="wrapper">
                 @if (Route::has('login'))
-                    <div class="logo"></div>
-                    <div class="menu links">
+                    <div class="logo">
+                        <a href="{{ url('/') }}">
+                            {{ config('app.name', 'SMN.NET') }}
+                        </a>
+                    </div>
+                    <div class="navigator">
                         @auth
                             <a href="{{ url('/home') }}">Home</a>
                         @else
@@ -31,9 +35,14 @@
                 @endif
             </div>
         </header>
-        <div class="content">
+        <div class="content py-4">
 
         </div>
 
+        <footer>
+            <div class="copyright">
+                <p>&copy; 2021-30XX, original idea. DO NOT STEAL ololololololo!!1</p>
+            </div>
+        </footer>
     </body>
 </html>

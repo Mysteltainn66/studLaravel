@@ -371,16 +371,21 @@ textarea {
 
 /*CSS RESET ENDS*/
 
+/* welcome.blade and app.blade css */
 html, body {
     background-color: #343651;
     color: #ffffff;
+    height: 100%;
     font-family: 'Nunito', sans-serif;
-
 }
 
 a {
     color: #ffffff;
     text-decoration: none;
+}
+
+a:hover {
+    color: orange;
 }
 
 div {
@@ -390,6 +395,7 @@ div {
 header {
     background-color: #464965;
     box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
+    margin: 0 0 10px 0;
 }
 
 .wrapper {
@@ -403,27 +409,186 @@ header {
 
 }
 
-.logo {
+.logo a {
     background: url("http://laravel.local/svg/logo.svg");
     background-size: 180px 26px;
     float: left;
     height: 26px;
     margin: 0 0 0 5px;
+    text-indent: -9999px;
     width: 180px;
 }
 
-.menu {
+.navigator {
     float: right;
     height: fit-content;
     margin: 0 0 0 0;
-    width: 140px;
+    width: 150px;
 }
 
-.menu > a {
+.navigator > a {
     float: right;
     margin-right: 20px;
+    outline: none;
 }
 
+.content {
+    background-color: #464965;
+    height: 1500px;
+    margin: 0 auto 10px auto;
+    min-height:100%;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
+    width: 990px;
+}
+
+/* login.blade & registration.blade css */
+
+empty {
+    min-height:100%;
+
+}
+
+.windowName {
+    background-color: #464965;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
+    padding: 10px 15px 10px 15px;
+    width: 100%;
+}
+
+.windowData {
+    background-color: #545773;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
+    margin: 4px auto 0 auto;
+    padding: 15px;
+    width: 100%;
+}
+
+.windowData a {
+    height: 24px;
+    width: 191px;
+}
+
+.windowStatusForm{
+    margin: 0 auto;
+    width: 400px;
+}
+
+.windowLoginForm {
+    height: 273px;
+    margin: 0 auto;
+    width: 435px;
+}
+
+.windowsRegForm {
+    height: 262px;
+    margin: 0 auto;
+    width: 760px;
+}
+
+.form-group {
+    margin: 0 0 15px 0;
+}
+
+button {
+    background-color: #545773;
+    display: inline-block;
+    color: orange;
+    font-weight: 700;
+    text-decoration: none;
+    user-select: none;
+    padding: .5em 2em;
+    outline: none;
+    border: 2px solid;
+    border-radius: 1px;
+    transition: 0.2s;
+}
+
+button:active {
+    color: #ff7300;
+    background: #464965;
+}
+
+button:hover {
+    background: #545773;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgb(255 115 0 / 75%);
+}
+
+.form-check-input {
+    float: left;
+    margin-left: -1.5em;
+    margin-top: 5px;
+}
+
+.form-check-input:checked {
+    background-color: #ff7300;
+    border-color: #ff7300;
+}
+
+.form-check-input:focus {
+    box-shadow: 0 0 0 0;
+}
+
+.form-check-label {
+    margin: 5px 0 0 0;
+}
+
+.buttonCenter, .resetCenter {
+    margin: 5px auto 5px;
+    width: fit-content;
+}
+
+.resetCenter > a:focus {
+    box-shadow: 0 0 0 0;
+}
+
+.btn-link {
+    color: white;
+}
+
+.btn-link:hover {
+    color: #ffa500;
+}
+
+.btn-link:focus {
+    color: #ff7300;
+}
+
+/* Footer CSS Starts */
+
+main {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    min-height: 100%;
+}
+
+.empty{
+    flex: 1 0 auto;
+}
+
+footer {
+    background-color: #464965;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
+    flex: 0 0 auto;
+}
+
+.copyright {
+    align-items: center;
+    display: flex;
+    height: 50px;
+    text-align: center;
+    margin: 0 auto;
+    width: 990px;
+}
+
+.copyright > p {
+    margin: 0 auto;
+}
+
+/* Footer CSS Ends */
 
 
 
