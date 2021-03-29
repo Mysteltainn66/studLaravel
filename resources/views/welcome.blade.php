@@ -11,6 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
+        <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
         <link rel="stylesheet" href="css/app.css">
 
 

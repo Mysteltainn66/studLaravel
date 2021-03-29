@@ -23,6 +23,7 @@
           crossorigin="anonymous">
 
     <!-- Styles -->
+    <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 
