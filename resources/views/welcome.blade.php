@@ -42,7 +42,7 @@
 
         <footer>
             <div class="copyright">
-                <p>&copy; 2021-30XX, original idea. DO NOT STEAL ololololololo!!1</p>
+                <p>&copy; 2021-{{ now()->year }}, original idea. DO NOT STEAL ololololololo!!1</p>
             </div>
         </footer>
     </body>

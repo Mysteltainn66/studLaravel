@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/admin', function () {
-    redirect('/');
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::get('/', 'Admin\DashboardController@index')->name('admin.dashboard');
+    Route::resource('users', 'Admin\UsersController');
 });
+
