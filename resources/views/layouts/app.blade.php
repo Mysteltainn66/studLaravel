@@ -50,11 +50,16 @@
                 @endif
             @else
                 <div class="navigator">
+
                     <a href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
+
+                    @if(Auth::user()->isAdmin())
+                        <a href="{{ route('admin.dashboard') }}">Control Panel</a>
+                    @endif
 
                     <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>
