@@ -27,7 +27,7 @@
 {{--                            </a>--}}
 {{--                        </li>--}}
                         <li @if ($pageSlug == 'users') class="active " @endif>
-                            <a href="{{ route('users.index')  }}">
+                            <a href="{{ route('admin.users.index')  }}">
                                 <i class="tim-icons icon-bullet-list-67"></i>
                                 <p>{{ __('User Management') }}</p>
                             </a>
@@ -44,7 +44,7 @@
             </li>
 
             <li @if ($pageSlug == 'users') class="active " @endif>
-                <a href="{{ route('users.index') }}">
+                <a href="{{ route('admin.users.index') }}">
                     <i class="tim-icons icon-single-02"></i>
                     <p>{{ __('Users') }}</p>
                 </a>

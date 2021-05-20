@@ -21,13 +21,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isadmin'], ], function () {
     Route::get('/', 'Admin\DashboardController@index')->name('admin.dashboard');
-    Route::resource('users', 'Admin\UsersController');
+    Route::delete('users/destroySelected', 'Admin\UsersController@destroySelected')
+            ->name('admin.users.destroySelected');
 
-    Route::resource('/categories', 'CategoryController');
 
-    Route::get('/products/restore/{id}', 'ProductController@restore')->name('products.restore');
-    Route::get('/products/trashed', 'ProductController@showTrashedProducts')->name('products.trashed');
-    Route::resource('/products', 'ProductController');
+    Route::resource('users', 'Admin\UsersController')->names('admin.users');
+    Route::get('users/getAll/test', 'Admin\UsersController@getAll')->name('admin.users.getall.test');
+
 });
 
 //Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {

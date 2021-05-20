@@ -9,7 +9,12 @@
 
         <title>{{ config('app.name', 'Black Dashboard') }}</title>
         <!--jQuery-->
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous">
+        </script>
+
         <!-- Favicon -->
         <link rel="icon" type="image/png" href="/images/favicon.ico">
         <!-- Fonts -->
@@ -20,6 +25,7 @@
         <!-- CSS -->
         <link href="/css/admin/black-dashboard.css?v=1.0.0" rel="stylesheet" />
         <link href="/css/admin/theme.css" rel="stylesheet" />
+        @stack('js-all')
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()
@@ -188,6 +194,5 @@
                 });
             });
         </script>
-        @stack('js')
     </body>
 </html>
