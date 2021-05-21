@@ -9,7 +9,7 @@
                     <div class="card-header">Manage User</div>
 
                     <div class="card-body">
-                        <form action="{{ route('admin.users.update', $user->id) }}" method="POST">
+                        <form action="{{ route('admin.users.update', $user->id) }}" method="POST" >
                             @csrf
                             @method('PATCH')
                             <table class="table">

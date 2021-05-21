@@ -23,10 +23,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isadmin'], ], funct
     Route::get('/', 'Admin\DashboardController@index')->name('admin.dashboard');
     Route::delete('users/destroySelected', 'Admin\UsersController@destroySelected')
             ->name('admin.users.destroySelected');
-
-
     Route::resource('users', 'Admin\UsersController')->names('admin.users');
-    Route::get('users/getAll/test', 'Admin\UsersController@getAll')->name('admin.users.getall.test');
+
 
 });
 

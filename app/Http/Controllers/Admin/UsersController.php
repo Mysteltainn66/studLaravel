@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Application\Json;
+use App\Http\Requests\AdminDashboardUserCreateRequest;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\AdminDashboardUserEditRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
 class UsersController extends Controller
@@ -19,6 +20,7 @@ class UsersController extends Controller
      */
     public function index()
     {
+
         $users = User::paginate(25);
 
         return view('admin.users.index', compact('users'));
@@ -35,15 +37,34 @@ class UsersController extends Controller
         return view('admin.users.create');
     }
 
+//    /**
+//     * Store a newly created resource in storage.
+//     *
+//     * @param  \Illuminate\Http\Request  $request
+//     * @return \Illuminate\Http\Response
+//     */
+
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param AdminDashboardUserCreateRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(AdminDashboardUserCreateRequest $request)
     {
-        dd(__METHOD__, $request);
+
+        $data = $request->input();
+
+        $user = new User($data);
+        $user->is_admin = $request->has('is_admin');
+
+        $user->save();
+
+        if ($user) {
+            return redirect()->route('admin.users.index', [$user->id])
+                ->with(['success' => 'User has been created.']);
+        } else {
+            return back()->withErrors(['danger' => 'Something gonna wrong.'])
+                ->withInput();
+        }
     }
 
     /**
@@ -117,17 +138,11 @@ class UsersController extends Controller
         return redirect()->route('admin.users.index')->with('success', 'User had been deleted');
     }
 
-    public function getAll( )
-    {
-       return response()->json(['data'=>User::all()]);
-    }
-
     public function destroySelected(Request $request)
     {
 
         $ids = $request->ids;
         User::whereIn('id',$ids)->delete();
-//        return redirect()->route('admin.users.index')->with('success', 'Selected users has been deleted');
         return response()->json(['success'  =>  "All selected users has been deleted"]);
     }
 }

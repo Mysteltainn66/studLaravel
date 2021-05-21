@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'phone', 'email', 'password',
+        'name', 'phone', 'email', 'password', 'is_admin'
     ];
 
     /**
@@ -25,8 +25,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'is_admin'
+        'password', 'remember_token',
     ];
+
+//    protected $casts = [
+//        'is_admin' => 'boolean',
+//    ];
 
     /**
      * Checking of administrator's rights

@@ -20,6 +20,7 @@
                     var allids = [];
                     $("input:checkbox[name=ids]:checked").each(function (){
                         allids.push($(this).val());
+
                     });
 
                     $.ajax({
@@ -29,6 +30,7 @@
                             ids:allids,
                             _token:$("input[name=_token]").val()
                         },
+
                         success:function(response)
                         {
                             var allids = [];
@@ -38,6 +40,8 @@
                             const tableBody = document.querySelector('#table-body');
                             allids.forEach(el=>{
                                 tableBody.removeChild(document.querySelector('#sid'+el));
+
+
                             });
 
                             document.querySelector('#response-text').innerHTML = response.success;
@@ -53,7 +57,7 @@
 
         </script>
     @endpush
-    <div id="alert" {{ (isset($_GET['state']) ?'':'hidden' ) }} class="row justify-content-center">
+    <div id="alert" hidden class="row justify-content-center">
         <div class="col-md-12">
             <div class="alert alert-danger" role="alert">
                 <button type="button" class="close" onclick="closealert()"  aria-label="Close">
@@ -61,11 +65,7 @@
                 </button>
 
                 <div id="response-text">
-                    <?php
-                        if(isset($_GET['state'])){
-                            echo "the records has been deleted";
-                        }
-                    ?>
+
                 </div>
             </div>
         </div>
