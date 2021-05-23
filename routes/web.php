@@ -24,12 +24,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isadmin'], ], funct
     Route::delete('users/destroySelected', 'Admin\UsersController@destroySelected')
             ->name('admin.users.destroySelected');
     Route::resource('users', 'Admin\UsersController')->names('admin.users');
-
-
+    Route::get('impersonate/user/{id}', 'Admin\ImpersonateController@index')->name('admin.impersonate');
 });
 
-//Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
-//    Route::get('/', 'Admin\DashboardController@index')->name('admin.dashboard');
-//    Route::resource('users', 'Admin\UsersController');
-//});
-
+Route::get('admin/impersonate/destroy', 'Admin\ImpersonateController@destroy')->name('admin.impersonate.destroy');

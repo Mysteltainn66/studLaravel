@@ -61,6 +61,10 @@
                         <a href="{{ route('admin.dashboard') }}">Control Panel</a>
                     @endif
 
+                    @impersonate()
+                        <a href="{{ route('admin.impersonate.destroy') }}">Exit from "Login As"</a>
+                    @endimpersonate
+
                     <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>

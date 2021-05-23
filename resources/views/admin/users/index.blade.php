@@ -99,7 +99,12 @@
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->phone }}</td>
-                            <td>{{ $user->email }}</td>
+                            <td>
+                                <a href="{{ route('admin.impersonate', $user->id)}}">
+                                    <button class="btn btn-sm btn-success">Login As</button>
+                                </a>
+                                {{ $user->email }}
+                            </td>
                             <td class="text-center">{{ $user->is_admin }}</td>
                             <td class="text-center">
                                 <a href="{{ route('admin.users.edit', $user->id) }}">
