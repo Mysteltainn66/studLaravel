@@ -24,7 +24,7 @@ class ImpersonateController extends Controller
         if ($user->is_admin == 1){
             return redirect()->route('admin.users.index')->with('warning', 'You are not allowed enter to admin account');
         }
-        
+
         return redirect('home');
     }
 
