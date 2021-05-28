@@ -62,7 +62,7 @@
                     @endif
 
                     @impersonate()
-                        <a href="{{ route('admin.impersonate.destroy') }}">Exit from "Login As"</a>
+                        <a href="{{ route('admin.impersonate.destroy') }}">Exit from {{ Auth::user()->name }}</a>
                     @endimpersonate
 
                     <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

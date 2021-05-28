@@ -18,10 +18,12 @@ class ImpersonateController extends Controller
         }
 
         if(Auth::user()->id == $id) {
+            session()->forget('impersonate');
             return redirect()->route('admin.users.index')->with('warning', 'You are not allowed to enter yourself');
         }
 
         if ($user->is_admin == 1){
+            session()->forget('impersonate');
             return redirect()->route('admin.users.index')->with('warning', 'You are not allowed enter to admin account');
         }
 

@@ -28,10 +28,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-//    protected $casts = [
-//        'is_admin' => 'boolean',
-//    ];
-
     /**
      * Checking of administrator's rights
      *

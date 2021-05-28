@@ -51,24 +51,17 @@
                                                required>
                                     </td>
                                     <td class="text-center">
-{{--                                        <input name="is_admin"--}}
-{{--                                               id="is_admin"--}}
-{{--                                               type="checkbox"--}}
-{{--                                               class="text-center"--}}
-{{--                                               value="{{ $user->is_admin }}"--}}
-{{--                                               @if($user->is_admin == true)--}}
-{{--                                               checked="checked"--}}
-{{--                                               @endif>--}}
-                                        <input name="is_admin" value="{{ $user->is_admin }}"
+                                        <input type="hidden" name="is_admin" value="0">
+                                        <input name="is_admin"
                                                id="is_admin"
-                                               type="text"
-                                               class="form-control"
-                                               minlength="1"
-                                               required>
+                                               type="checkbox"
+                                               value="1"
+                                            {{ $user->is_admin || old('is_admin', 0) === 1 ? 'checked="checked"' : '' }}
+                                        >
                                     </td>
 
                                     <td>
-                                        <button type="submit" class="btn-sm btn-primary">Accept</button>
+                                        <button type="submit" class="btn-sm btn-primary">Save</button>
                                     </td>
                                 </tr>
                                 </tbody>
