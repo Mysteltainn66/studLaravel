@@ -142,7 +142,7 @@
             </a>
             <button type="button" class="btn btn-danger btn-lg" id="deleteAllSelectedRecords">Delete</button>
         </div>
-    </div>
+        </div>
 @endsection
 
 

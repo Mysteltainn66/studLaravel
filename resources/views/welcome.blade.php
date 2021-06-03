@@ -36,8 +36,11 @@
                 @endif
             </div>
         </header>
-        <div class="content py-4">
 
+        <div class="content py-4 profile">
+            @if(Auth::user())
+                @include('profile')
+            @endif
         </div>
 
         <footer>

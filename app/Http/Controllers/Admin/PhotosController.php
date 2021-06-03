@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Categories;
+use App\Photos;
+use App\User;
+use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -10,17 +14,42 @@ class PhotosController extends Controller
 
     public function index()
     {
-        return view('admin.photos.index');
+        $photos = Photos::paginate(25);
+
+        return view('admin.photos.index', compact('photos'));
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|Application|\Illuminate\View\View
      */
     public function create()
     {
-        dd(__METHOD__);
+        $categories = Categories::all();
+        $users = User::all();
+
+        return view('admin.photos.create', compact('categories' , 'users'));
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+
+    public function store(Request $request)
+    {
+        if ($request->hasFile('photo')) {
+            $user_id = $request->input('user_id');
+
+            $photo = new Photos([
+                'path'         => $request->file('photo')->store($user_id, 'photos'),
+                'name'          => $request->get('name'),
+                'category_id'   => $request->get('category_id'),
+                'user_id'       => $request->get('user_id'),
+            ]);
+            $photo->save();
+        }
+
+        return redirect()->route('admin.photos.index')->with('success', 'Image uploaded successfully');
     }
 
     /**
@@ -47,13 +76,12 @@ class PhotosController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        dd(__METHOD__, $id);
+        Photos::destroy($id);
+        return redirect()->route('admin.photos.index')->with('Success', 'Photo has been deleted.');
     }
 }
