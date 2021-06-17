@@ -1,6 +1,47 @@
 @extends('layouts.backend', ['pageSlug' => 'photos'])
 
 @section('content')
+    @push('js-all')
+        <style>
+            .pictures {
+                -webkit-column-count: 25;
+                -moz-column-count: 25;
+                column-count: 25;
+                -webkit-column-gap: 1em;
+                -moz-column-gap: 1em;
+                column-gap: 1em;
+                margin-bottom: -1em;
+            }
+            a {
+                display: inline-block;
+            }
+
+            img {
+                display: block;
+                height: 100%;
+                width: 100%;
+                margin-bottom: 1em;
+            }
+            .full {
+                display: none;
+                position: fixed;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                padding: 8%;
+                background: #CCC center no-repeat;
+                background: rgba(0, 0, 0, 0.5) center no-repeat;
+                background-size: auto 500px;
+                background-origin: content-box;
+            }
+            a:focus + .full {
+                display: block;
+                z-index: 999999;
+
+            }
+        </style>
+    @endpush
     @include('admin.users.includes.alert')
     <div id="alert" hidden class="row justify-content-center">
         <div class="col-md-12">
@@ -23,11 +64,12 @@
             <div class="table-responsive ps">
                 <table class="table tablesorter">
 
-                    <thead class=" text-primary">
+                    <thead class="text-primary">
                     <tr>
                         <th><input type="checkbox" id="chkCheckAll"></th>
                         <th>ID</th>
                         <th>Preview</th>
+                        <th></th>
                         <th>Name</th>
                         <th>Category ID</th>
                         <th>User ID</th>
@@ -38,19 +80,30 @@
                     </tr>
                     </thead>
                     <tbody id="table-body">
-
                     @foreach($photos as $photo)
-                    <tr>
+                    <tr class="pictures">
                         <td><input type="checkbox" name="ids" class="checkBoxClass" value=""></td>
                         <td>{{ $photo->id }}</td>
-                        <td><img src="{{ asset('/storage/photos') . '/' . $photo->path}}" style="width: 120px; height: auto"></td>
+                        <td style="height: 0px">
+                            <a href="#{{ $photo->path }}">
+                                <img class="img-to-show" src="{{ asset('/storage/photos') . '/' . $photo->path}}" style="width: 120px; height: auto;" >
+                            </a>
+                            <a id="{{ $photo->id }}" href="#" class="full" style="background-image:url({{ asset('/storage/photos') . '/' . $photo->path}})"></a>
+                        </td>
+                        <td>
+                            <a href="{{ asset('/storage/photos') . '/' . $photo->path}}">
+                                <button type="button" class="btn btn-outline-secondary btn-sm" title="Open original image">
+                                    <i class="far fa-file-image"></i>
+                                </button>
+                            </a>
+                        </td>
                         <td>{{ $photo->name }}</td>
                         <td>{{ $photo->category_id }}</td>
                         <td>{{ $photo->user_id }}</td>
                         <td>{{ $photo->created_at }}</td>
                         <td>{{ $photo->updated_at }}</td>
                         <td>
-                            <a href="#">
+                            <a href="{{ route('admin.photos.edit', $photo->id) }}">
                                 <button type="button" class="btn-sm btn-primary">Edit</button>
                             </a>
                         </td>
@@ -67,18 +120,6 @@
                     </tbody>
                 </table>
 
-{{--            @if($users->total() > $users->count())--}}
-{{--                <br>--}}
-{{--                <div class="row justify-content-center">--}}
-{{--                    <div class="col-md-12">--}}
-{{--                        <div class="card">--}}
-{{--                            <div class="card-body">--}}
-{{--                                {{ $users->links() }}--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            @endif--}}
         </div>
         <div class="float-right">
             <a href="{{ route('admin.photos.create') }}">

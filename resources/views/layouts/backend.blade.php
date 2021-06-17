@@ -89,6 +89,7 @@
         {{-- <script src="/js/plugins/chartjs.min.js"></script> --}}
         <!--  Notifications Plugin    -->
         <script src="/js/admin/plugins/bootstrap-notify.js"></script>
+        <script src="/js/admin/plugins/zooming.min.js"></script>
 
         <script src="/js/admin/black-dashboard.min.js?v=1.0.0"></script>
         <script src="/js/admin/theme.js"></script>
