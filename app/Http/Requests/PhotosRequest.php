@@ -25,7 +25,7 @@ class PhotosRequest extends FormRequest
     public function rules()
     {
         return [
-            'path'  => 'required|mimes:bmp,jpg,jpeg,png',
+            'path'  => 'mimes:bmp,jpg,jpeg,png',
         ];
     }
 }

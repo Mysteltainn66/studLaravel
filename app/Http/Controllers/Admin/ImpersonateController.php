@@ -27,7 +27,7 @@ class ImpersonateController extends Controller
             return redirect()->route('admin.users.index')->with('warning', 'You are not allowed enter to admin account');
         }
 
-        return redirect('home');
+        return redirect('profile');
     }
 
     public function destroy()

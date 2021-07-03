@@ -17,7 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'profile', 'middleware' => 'auth',], function() {
+    Route::get('/', 'ProfileController@index')->name('profile');
+
+    Route::resource('/settings', 'Frontend\UserSettingsController')->names('profile.settings');
+});
+
 
 //Админка
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isadmin'], ], function () {

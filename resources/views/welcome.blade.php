@@ -27,7 +27,7 @@
                     </div>
                     <div class="navigator">
                         @auth
-                            <a href="{{ url('/home') }}">Home</a>
+                            <a href="{{ route('profile') }}">Profile</a>
                         @else
                             <a href="{{ route('login') }}">Login</a>
                             <a href="{{ route('register') }}">Register</a>
@@ -38,14 +38,12 @@
         </header>
 
         <div class="content py-4 profile">
-            @if(Auth::user())
-                @include('profile')
-            @endif
+
         </div>
 
         <footer>
             <div class="copyright">
-                <p>&copy; 2021-{{ now()->year }}, original idea. DO NOT STEAL ololololololo!!1</p>
+                <p>&copy; {{ now()->year }}, original idea. DO NOT STEAL ololololololo!!1</p>
             </div>
         </footer>
     </body>

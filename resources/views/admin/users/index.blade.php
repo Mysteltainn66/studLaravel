@@ -82,6 +82,7 @@
                     <tr>
                         <th><input type="checkbox" id="chkCheckAll"></th>
                         <th>ID</th>
+                        <th>Avatar ID</th>
                         <th>Name</th>
                         <th>Phone</th>
                         <th>Email</th>
@@ -97,6 +98,9 @@
                         <tr id="sid{{ $user->id }}">
                             <td><input type="checkbox" name="ids" class="checkBoxClass" value="{{ $user->id }}"></td>
                             <td>{{ $user->id }}</td>
+                            <td>
+                                <img class="img-to-show" src="{{ asset('/storage/avatars') . '/' . $user->avatar_id }}" style="width: 208px; height: auto;" >
+                            </td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->phone }}</td>
                             <td>

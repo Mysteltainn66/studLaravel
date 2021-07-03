@@ -54,6 +54,7 @@
                     <a href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
+
                         {{ __('Logout') }}
                     </a>
 
@@ -65,9 +66,14 @@
                         <a href="{{ route('admin.impersonate.destroy') }}">Exit from {{ Auth::user()->name }}</a>
                     @endimpersonate
 
-                    <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <a href="{{ route('profile.settings.index') }}">Settings</a>
+
+                    <a href="{{ route('profile') }}" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
+
+
+
                 </div>
             </div>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -78,13 +84,13 @@
     </div>
 </header>
     <main>
-        <div class="empty">
+        <div class="content empty profile">
             @yield('content')
         </div>
     </main>
 <footer>
     <div class="copyright">
-        <p>&copy; 2021-30XX, original idea. DO NOT STEAL ololololololo!!1</p>
+        <p>&copy; {{ now()->year }}, original idea. DO NOT STEAL ololololololo!!1</p>
     </div>
 </footer>
 </body>

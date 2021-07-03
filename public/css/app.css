@@ -558,10 +558,15 @@ button:hover {
 
 /* Profile CSS*/
 
+.profile-info
+{
+    display: flex;
+}
+
 .avatar
 {
     height: 208px;
-    margin: 0 10px 0 42px;
+    margin-left: 42px;
     width: 208px;
 }
 
@@ -573,14 +578,59 @@ button:hover {
 
 .profile
 {
-    display: flex;
+    display: block;
     padding-top: 42px;
 }
 
-.profileData {
-    height: 500px;
-    width: 500px;
+.profileData
+{
+    height: 208px;
+    margin-left: 20px;
+    width: 720px;
 }
+
+.menu
+{
+    display: flex;
+    margin: 50px auto 0px auto;
+    width: fit-content;
+}
+
+.menu > li
+{
+    margin: 0 10px 0 10px;
+}
+
+.publication
+{
+    width: 990px;
+}
+
+.public-tabs
+{
+    flex-direction: column;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    margin-top: 50px;
+    width: 990px;
+}
+
+.posts
+{
+    display: flex;
+    margin: 0 auto;
+    border: 1px green solid;
+    width: 960px;
+}
+
+.post
+{
+    height: 300px;
+    margin-bottom: 30px;
+    border: 1px green solid;
+    width: 300px;
+}
+
 /* Footer CSS Starts */
 
 main {
